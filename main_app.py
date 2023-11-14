@@ -256,10 +256,10 @@ st.subheader("DATA INPUT")
 with st.form(key="BASE_VALUE"):
 
     # 入力部分
-    dct["SEARCH_URL"] = st.text_input("Search URL", "https://www.pixiv.net/users/420928")
+    dct["SEARCH_URL"] = st.text_input("Search URL")
     dct["TIME_RANGE"] = str(st.date_input("What is the collection period? (lower limit)")).replace("-","")
-    dct["PIXIV_ID"] = st.text_input("PIXIV's ID", "clione442@gmail.com")
-    dct["PIXIV_PAS"] = st.text_input("PIXIV's PAS", "pixivtaku")
+    dct["PIXIV_ID"] = st.text_input("PIXIV's ID")
+    dct["PIXIV_PAS"] = st.text_input("PIXIV's PAS")
 
     # button設定
     decision_btn = st.form_submit_button("Decision")
