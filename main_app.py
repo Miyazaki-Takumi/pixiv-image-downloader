@@ -4,9 +4,10 @@ import re
 import shutil
 import requests
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome import service as fs
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
+from webdriver_manager.core.utils import ChromeType
 from selenium.webdriver.common.by import By
 import streamlit as st
 
@@ -280,9 +281,11 @@ if decision_btn and not "" in dct.values():
     
     with st.spinner('Wait for it...'):
         #----------seleniumの準備-----------
+        CHROMEDRIVER = ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()
+        service = fs.Service(CHROMEDRIVER)
         options = Options()
         options.add_argument('--disable-gpu')
-        driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+        driver = webdriver.Chrome(service=service, options=options)
         # driver = webdriver.Chrome("./chromedriver.exe" ,options=options)
         # ----------------------------------
 
