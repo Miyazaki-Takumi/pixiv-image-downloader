@@ -4,6 +4,8 @@ import re
 import shutil
 import requests
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 import streamlit as st
@@ -279,8 +281,8 @@ if decision_btn and not "" in dct.values():
     with st.spinner('Wait for it...'):
         #----------seleniumの準備-----------
         options = Options()
-        # options.add_argument('--headless')
-        driver = webdriver.Chrome("./chromedriver.exe" ,options=options)
+        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+        # driver = webdriver.Chrome("./chromedriver.exe" ,options=options)
         # ----------------------------------
 
         login(dct["PIXIV_ID"],dct["PIXIV_PAS"])
